@@ -1,12 +1,17 @@
-package model;
+package model.circuit;
 
-public class CircuitDirt extends Circuit{
+import model.circuit.Circuit;
+
+public class CircuitDirt extends Circuit {
     private String terrain;
     private int jumps;
     private int obstacles;
 
-    public CircuitDirt(String name, int length, String location, String record, String terrain, int jumps, int obstacles) {
-        super(name, length, location, record);
+
+    public CircuitDirt() {
+    }
+    public CircuitDirt(int circuitID, String name, String length, String location, String record, String terrain, int jumps, int obstacles) {
+        super(circuitID, name, length, location, record);
         this.terrain = terrain;
         this.jumps = jumps;
         this.obstacles = obstacles;
@@ -39,6 +44,7 @@ public class CircuitDirt extends Circuit{
     @Override
     public String toString() {
         return "CircuitDirt{" +
+                "circuitID=" + getCircuitID() +
                 "name='" + getName() + '\'' +
                 ", length=" + getLength() +
                 ", location='" + getLocation() + '\'' +

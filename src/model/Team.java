@@ -1,19 +1,26 @@
 package model;
 
 public class Team {
+    private int teamID;
     private Driver driver;
-
     private String name;
     private String sponsor;
     private int trophies;
     private int budget;
 
-    public Team(String name, String sponsor, int trophies, int budget, Driver driver) {
+    public Team() {
+    }
+    public Team(int  teamID, String name, String sponsor, int trophies, int budget, Driver driver) {
+        this. teamID =  teamID;
         this.name = name;
         this.sponsor = sponsor;
         this.trophies = trophies;
         this.budget = budget;
         this.driver = driver;
+    }
+
+    public int getTeamID() {
+        return  teamID;
     }
 
     public String getName() {
@@ -34,6 +41,10 @@ public class Team {
 
     public Driver getDriver() {
         return driver;
+    }
+
+    public void setTeamID(int  teamID) {
+        this. teamID =  teamID;
     }
     public void setName(String name) {
         this.name = name;
@@ -58,6 +69,7 @@ public class Team {
     @Override
     public String toString() {
         return "Team{" +
+                "teamID=" +  teamID +
                 "name='" + name + '\'' +
                 ", sponsor='" + sponsor + '\'' +
                 ", trophies=" + trophies +

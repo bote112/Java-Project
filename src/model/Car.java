@@ -1,18 +1,25 @@
 package model;
 
 public class Car {
+    private int carID;
     private String model;
     private String color;
     private int maxSpeed;
     private int power;
 
-    public Car(String model, String color, int maxSpeed, int power) {
+    public Car() {
+    }
+    public Car(int carID,String model, String color, int maxSpeed, int power) {
+        this.carID = carID;
         this.model = model;
         this.color = color;
         this.maxSpeed = maxSpeed;
         this.power = power;
     }
 
+    public int getCarID() {
+        return carID;
+    }
     public String getModel() {
         return model;
     }
@@ -27,6 +34,10 @@ public class Car {
 
     public int getPower() {
         return power;
+    }
+
+    public void setCarID(int carID) {
+        this.carID = carID;
     }
 
     public void setModel(String model) {
@@ -48,6 +59,7 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
+                "carID=" + carID +
                 "model='" + model + '\'' +
                 ", color='" + color + '\'' +
                 ", maxSpeed=" + maxSpeed +

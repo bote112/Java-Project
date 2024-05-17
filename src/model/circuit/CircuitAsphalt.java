@@ -1,20 +1,22 @@
-package model;
+package model.circuit;
 
-public class CircuitAsphalt extends Circuit{
+import model.circuit.Circuit;
+
+public class CircuitAsphalt extends Circuit {
     private String type; // street, permanent, drag, etc.
     private int turns;
     private String tire;
 
-    public CircuitAsphalt(String name, int length, String location, String record, String type, int turns, String tire) {
-        super(name, length, location, record);
+    public CircuitAsphalt() {
+    }
+    public CircuitAsphalt(int circuitID, String name, String length, String location, String record, String type, int turns, String tire) {
+        super(circuitID, name, length, location, record);
         this.type = type;
         this.turns = turns;
         this.tire = tire;
     }
 
-    public String getType() {
-        return type;
-    }
+    public String getType() { return type; }
 
     public int getTurns() {
         return turns;
@@ -39,6 +41,7 @@ public class CircuitAsphalt extends Circuit{
     @Override
     public String toString() {
         return "CircuitAsphalt{" +
+                "circuitID=" + getCircuitID() +
                 "name='" + getName() + '\'' +
                 ", length=" + getLength() +
                 ", location='" + getLocation() + '\'' +

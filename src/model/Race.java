@@ -1,21 +1,26 @@
 package model;
 
-import java.util.Date;
-import java.util.List;
-import java.util.ArrayList;
+import model.circuit.Circuit;
 
 public class Race {
+    private int raceID;
     private Circuit circuit;
     private Team[] teams;
     private int laps;
     private Team winner;
 
-    public Race (Circuit circuit, Team[] teams, int laps) {
+    public Race() {
+    }
+    public Race (int raceID, Circuit circuit, Team[] teams, int laps) {
+        this.raceID = raceID;
         this.circuit = circuit;
         this.teams = teams;
         this.laps = laps;
     }
 
+    public int getRaceID() {
+        return raceID;
+    }
     public Circuit getCircuit() {
         return circuit;
     }
@@ -32,6 +37,9 @@ public class Race {
         return winner;
     }
 
+    public void setRaceID(int raceID) {
+        this.raceID = raceID;
+    }
     public void setCircuit(Circuit circuit) {
         this.circuit = circuit;
     }
@@ -51,6 +59,7 @@ public class Race {
     @Override
     public String toString() {
         return "Race " +
+                "raceID=" + raceID +
                 "circuit=" + circuit +
                 ", teams=" + teams +
                 ", laps=" + laps +

@@ -1,23 +1,30 @@
-package model;
+package model.circuit;
 
 public class Circuit {
-    private String name;
-    private int length;
-    private String location;
-    private String record;
+    protected  int circuitID;
+    protected  String name;
+    protected  String length;
+    protected  String location;
+    protected  String record;
 
-    public Circuit(String name, int length, String location, String record) {
+    public Circuit() {
+    }
+    public Circuit(int circuitID, String name, String length, String location, String record) {
+        this.circuitID = circuitID;
         this.name = name;
         this.length = length;
         this.location = location;
         this.record = record;
     }
 
+    public int getCircuitID() {
+        return circuitID;
+    }
     public String getName() {
         return name;
     }
 
-    public int getLength() {
+    public String getLength() {
         return length;
     }
 
@@ -28,11 +35,15 @@ public class Circuit {
         return record;
     }
 
+    public void setCircuitID(int circuitID) {
+        this.circuitID = circuitID;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setLength(int length) {
+    public void setLength(String length) {
         this.length = length;
     }
 

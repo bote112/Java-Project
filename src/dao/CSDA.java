@@ -1,6 +1,0 @@
-package dao;
-
-public class CSDA {
-    //TOT INAFARA DE CIRCUIT (CA NU EXISTA SOLO)
-    // SI CRUDURI SIMPLE SE FAC DE AICI
-}
