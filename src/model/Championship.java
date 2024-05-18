@@ -46,6 +46,14 @@ public class Championship {
         this.year = year;
     }
 
+    public void setRaces(Race[] races) {
+        this.races = races;
+    }
+
+    public void setChampion(Team champion) {
+        this.champion = champion;
+    }
+
     @Override
     public String toString() {
         return "Championship{" +

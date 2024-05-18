@@ -57,10 +57,19 @@ public class RaceDao implements DaoInterface <Race> {
 
             while (resultSet.next()) {
                 race = new Race();
-                race.setRaceID(resultSet.getInt("raceID"));
-//pentru ca nu exista circuitDao, nu poate folosi getInstance
-                //race.setCircuit(CircuitDao.getInstance().read(String.valueOf(resultSet.getInt("circuit"))));
+                // creem un obiect de tip Circuit pentru a putea apela getInstance() pentru amandoua tipurile de circuit
+                // astfel nu trebuie sa stim exact tipul de circuit pentru a-l citi
+                int circuitID = resultSet.getInt("circuit");
+                Circuit circuitAsphalt = CircuitAsphaltDao.getInstance().read(String.valueOf(circuitID));
+                Circuit circuitDirt = CircuitDirtDao.getInstance().read(String.valueOf(circuitID));
+                if (circuitAsphalt != null) {
+                    race.setCircuit(circuitAsphalt);
+                }
+                else if (circuitDirt != null) {
+                    race.setCircuit(circuitDirt);
+                }
                 race.setLaps(resultSet.getInt("laps"));
+                race.setWinner(TeamDao.getInstance().read(String.valueOf(resultSet.getInt("winner"))));
 
             }
         } finally {
@@ -105,6 +114,7 @@ public class RaceDao implements DaoInterface <Race> {
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, race.getCircuit().getCircuitID());
             statement.setInt(2, race.getLaps());
+            statement.setInt(3, race.getWinner().getTeamID());
             statement.setInt(3, race.getRaceID());
             statement.executeUpdate();
         }
