@@ -1,12 +1,9 @@
 package dao;
 
 import java.sql.*;
-import java.util.List;
-import java.util.ArrayList;
 
-import model.Car;
 import model.Driver;
-import daoservices.DatabaseConnection;
+import service.DatabaseConnection;
 
 
 public class DriverDao implements DaoInterface<Driver> {

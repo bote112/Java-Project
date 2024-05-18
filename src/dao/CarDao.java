@@ -1,13 +1,9 @@
 package dao;
 
 import java.sql.*;
-import java.util.List;
-import java.util.ArrayList;
 
 import model.Car;
-import daoservices.DatabaseConnection;
-
-import javax.xml.transform.Result;
+import service.DatabaseConnection;
 
 public class CarDao implements DaoInterface<Car> {
 

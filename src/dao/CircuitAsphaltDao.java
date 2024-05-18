@@ -1,10 +1,8 @@
 package dao;
 
 import java.sql.*;
-import java.util.List;
-import java.util.ArrayList;
 
-import daoservices.DatabaseConnection;
+import service.DatabaseConnection;
 import model.circuit.*;
 
 public class CircuitAsphaltDao implements DaoInterface<CircuitAsphalt> {

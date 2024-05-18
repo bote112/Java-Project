@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import model.Race;
 import model.circuit.*;
 import model.Team;
-import daoservices.DatabaseConnection;
+import service.DatabaseConnection;
 
 public class RaceDao implements DaoInterface <Race> {
     private static RaceDao raceDao;
@@ -132,6 +132,43 @@ public class RaceDao implements DaoInterface <Race> {
                 statement.setInt(2, team.getTeamID());
                 statement.executeUpdate();
             }
+        }
+    }
+
+    public List <Race> getAll() throws SQLException {
+        List<Race> races = new ArrayList<>();
+        String sql = "SELECT * FROM schema.race";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql); ResultSet resultSet = statement.executeQuery();) {
+            while (resultSet.next()) {
+                Race race = new Race();
+                race.setRaceID(resultSet.getInt("raceID"));
+                race.setWinner(TeamDao.getInstance().read(String.valueOf(resultSet.getInt("winner"))));
+                race.setLaps(resultSet.getInt("laps"));
+
+
+                int circuitID = resultSet.getInt("circuit");
+                Circuit circuitAsphalt = CircuitAsphaltDao.getInstance().read(String.valueOf(circuitID));
+                Circuit circuitDirt = CircuitDirtDao.getInstance().read(String.valueOf(circuitID));
+                if (circuitAsphalt != null) {
+                    race.setCircuit(circuitAsphalt);
+                } else if (circuitDirt != null) {
+                    race.setCircuit(circuitDirt);
+                }
+
+                sql = "SELECT teamID FROM schema.race_team WHERE raceID = ?";
+                try (PreparedStatement teamStatement = connection.prepareStatement(sql);) {
+                    teamStatement.setInt(1, race.getRaceID());
+                    ResultSet teamResultSet = teamStatement.executeQuery();
+                    List<Team> teams = new ArrayList<>();
+                    while (teamResultSet.next()) {
+                        teams.add(TeamDao.getInstance().read(String.valueOf(teamResultSet.getInt("teamID"))));
+                    }
+                    race.setTeams(teams.toArray(new Team[0]));
+                }
+                races.add(race);
+            }
+            return races;
         }
     }
 }

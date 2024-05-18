@@ -1,4 +1,4 @@
-package service;
+package daoservices;
 
 public class DAS {
     //TOT INAFARA DE ASPLHALT SI DIRT

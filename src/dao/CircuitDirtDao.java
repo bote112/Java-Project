@@ -1,11 +1,9 @@
 package dao;
 
 import java.sql.*;
-import java.util.List;
-import java.util.ArrayList;
 
 import model.circuit.*;
-import daoservices.DatabaseConnection;
+import service.DatabaseConnection;
 
 public class CircuitDirtDao implements DaoInterface <CircuitDirt> {
     private static CircuitDirtDao circuitDirtDao;

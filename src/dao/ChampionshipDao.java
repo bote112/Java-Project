@@ -5,9 +5,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 import model.Championship;
-import daoservices.DatabaseConnection;
+import service.DatabaseConnection;
 import model.Race;
-import model.Team;
 
 
 public class ChampionshipDao implements DaoInterface<Championship> {

@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Team;
-import model.Driver;
-import daoservices.DatabaseConnection;
+import service.DatabaseConnection;
 
 public class TeamDao implements DaoInterface<Team>{
 
@@ -84,5 +83,23 @@ public class TeamDao implements DaoInterface<Team>{
             statement.setInt(6, team.getTeamID());
             statement.executeUpdate();
         }
+    }
+
+    public List <Team> getAll() throws SQLException {
+        List <Team> teams = new ArrayList<>();
+        String sql = "SELECT * FROM schema.team";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql); ResultSet resultSet = statement.executeQuery();) {
+            while (resultSet.next()) {
+                Team team = new Team();
+                team.setName(resultSet.getString("name"));
+                team.setSponsor(resultSet.getString("sponsor"));
+                team.setTrophies(resultSet.getInt("trophies"));
+                team.setBudget(resultSet.getInt("budget"));
+                team.setDriver(DriverDao.getInstance().read(resultSet.getString("driver")));
+                teams.add(team);
+            }
+        }
+    return teams;
     }
 }
