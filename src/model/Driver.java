@@ -9,8 +9,7 @@ public class Driver {
 
     public Driver() {
     }
-    public Driver(int driverID, Car car, String name, int age, String country) {
-        this.driverID = driverID;
+    public Driver( Car car, String name, int age, String country) {
         this.car = car;
         this.name = name;
         this.age = age;

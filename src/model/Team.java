@@ -10,8 +10,7 @@ public class Team {
 
     public Team() {
     }
-    public Team(int  teamID, String name, String sponsor, int trophies, int budget, Driver driver) {
-        this. teamID =  teamID;
+    public Team(String name, String sponsor, int trophies, int budget, Driver driver) {
         this.name = name;
         this.sponsor = sponsor;
         this.trophies = trophies;

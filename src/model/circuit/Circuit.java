@@ -9,8 +9,7 @@ public class Circuit {
 
     public Circuit() {
     }
-    public Circuit(int circuitID, String name, String length, String location, String record) {
-        this.circuitID = circuitID;
+    public Circuit( String name, String length, String location, String record) {
         this.name = name;
         this.length = length;
         this.location = location;

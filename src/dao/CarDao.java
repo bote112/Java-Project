@@ -24,8 +24,8 @@ public class CarDao implements DaoInterface<Car> {
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setString(1, String.valueOf(car.getModel()));
             statement.setString(2, String.valueOf(car.getColor()));
-            statement.setInt(3, car.getMaxSpeed());
-            statement.setInt(4, car.getPower());
+            statement.setString(3, car.getMaxSpeed());
+            statement.setString(4, car.getPower());
             statement.executeUpdate();
         }
     }
@@ -42,8 +42,8 @@ public class CarDao implements DaoInterface<Car> {
                 Car car = new Car();
                 car.setModel(resultSet.getString("model"));
                 car.setColor(resultSet.getString("color"));
-                car.setMaxSpeed(resultSet.getInt("maxSpeed"));
-                car.setPower(resultSet.getInt("power"));
+                car.setMaxSpeed(resultSet.getString("maxSpeed"));
+                car.setPower(resultSet.getString("power"));
                 return car;
             }
         } finally {
@@ -70,8 +70,8 @@ public class CarDao implements DaoInterface<Car> {
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setString(1, car.getModel());
             statement.setString(2, car.getColor());
-            statement.setInt(3, car.getMaxSpeed());
-            statement.setInt(4, car.getPower());
+            statement.setString(3, car.getMaxSpeed());
+            statement.setString(4, car.getPower());
             statement.setInt(5, car.getCarID());
             statement.executeUpdate();
         }

@@ -9,8 +9,8 @@ public class CircuitAsphalt extends Circuit {
 
     public CircuitAsphalt() {
     }
-    public CircuitAsphalt(int circuitID, String name, String length, String location, String record, String type, int turns, String tire) {
-        super(circuitID, name, length, location, record);
+    public CircuitAsphalt( String name, String length, String location, String record, String type, int turns, String tire) {
+        super( name, length, location, record);
         this.type = type;
         this.turns = turns;
         this.tire = tire;

@@ -1,0 +1,13 @@
+Car created: Car{carID=0model='opel', color='red', maxSpeed=100kmh, power=90hp};2024-05-19T06:04:59.990370700
+Car read: 1;2024-05-19T06:05:05.800914800
+Team read: 1;2024-05-19T06:05:17.974804700
+Car updated: Car{carID=0model='opel', color='red', maxSpeed=120kmp, power=90hp};2024-05-19T06:06:36.055088
+Car read: 4;2024-05-19T06:06:42.695313600
+Car read: 6;2024-05-19T06:06:50.608203500
+Car read: 3;2024-05-19T06:06:55.704099
+Car read: 5;2024-05-19T06:07:13.961637200
+Driver updated: Driver{driverID=0car=Car{carID=0model='opel', color='red', maxSpeed=100kmh, power=90hp}name='quit', age=19, country='romania'};2024-05-19T06:07:52.939808100
+Driver read: 1;2024-05-19T06:07:57.240998700
+Car deleted: 1;2024-05-19T06:08:11.575458700
+Car read: 1;2024-05-19T06:08:19.900652
+Driver deleted: 1;2024-05-19T06:08:40.642720300

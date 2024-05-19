@@ -4,13 +4,12 @@ public class Car {
     private int carID;
     private String model;
     private String color;
-    private int maxSpeed;
-    private int power;
+    private String maxSpeed;
+    private String power;
 
     public Car() {
     }
-    public Car(int carID,String model, String color, int maxSpeed, int power) {
-        this.carID = carID;
+    public Car(String model, String color, String maxSpeed, String power) {
         this.model = model;
         this.color = color;
         this.maxSpeed = maxSpeed;
@@ -28,11 +27,11 @@ public class Car {
         return color;
     }
 
-    public int getMaxSpeed() {
+    public String getMaxSpeed() {
         return maxSpeed;
     }
 
-    public int getPower() {
+    public String getPower() {
         return power;
     }
 
@@ -48,11 +47,11 @@ public class Car {
         this.color = color;
     }
 
-    public void setMaxSpeed(int maxSpeed) {
+    public void setMaxSpeed(String maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
 
-    public void setPower(int power) {
+    public void setPower(String power) {
         this.power = power;
     }
 
