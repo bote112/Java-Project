@@ -26,7 +26,7 @@ public class RaceDao implements DaoInterface <Race> {
 
     @Override
     public void add(Race race) throws SQLException {
-        String sql = "INSERT INTO schema.race(circuit, laps, winner) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO racing.race(circuit, laps, winner) VALUES (?, ?, ?);";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, race.getCircuit().getCircuitID());
             statement.setInt(2, race.getLaps());
@@ -35,7 +35,7 @@ public class RaceDao implements DaoInterface <Race> {
         }
 
         for(Team team : race.getTeams()) {
-            sql = "INSERT INTO schema.race_team (raceID, teamID) VALUES (?, ?);";
+            sql = "INSERT INTO racing.race_team (raceID, teamID) VALUES (?, ?);";
             try (PreparedStatement statement = connection.prepareStatement(sql);) {
                 statement.setInt(1, race.getRaceID());
                 statement.setInt(2, team.getTeamID());
@@ -46,7 +46,7 @@ public class RaceDao implements DaoInterface <Race> {
 
     @Override
     public Race read(String raceID) throws SQLException {
-        String sql = "SELECT * FROM schema.race WHERE raceID = ?";
+        String sql = "SELECT * FROM racing.race WHERE raceID = ?";
         //pentru a putea accesa ulterior arrayul de echipe, trebuie initializat race aici
         Race race = null;
         ResultSet resultSet = null;
@@ -80,7 +80,7 @@ public class RaceDao implements DaoInterface <Race> {
         }
 
         if (race != null) {
-            sql = "SELECT teamID FROM schema.race_team WHERE raceID = ?";
+            sql = "SELECT teamID FROM racing.race_team WHERE raceID = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql);) {
                 statement.setString(1, raceID);
                 resultSet = statement.executeQuery();
@@ -96,13 +96,13 @@ public class RaceDao implements DaoInterface <Race> {
 
     @Override
     public void delete(Race race) throws SQLException {
-        String sql = "DELETE FROM schema.race WHERE raceID = ?";
+        String sql = "DELETE FROM racing.race WHERE raceID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, race.getRaceID());
             statement.executeUpdate();
         }
 
-        sql = "DELETE FROM schema.race_team WHERE raceID = ?";
+        sql = "DELETE FROM racing.race_team WHERE raceID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, race.getRaceID());
             statement.executeUpdate();
@@ -111,7 +111,7 @@ public class RaceDao implements DaoInterface <Race> {
 
     @Override
     public void update(Race race) throws SQLException {
-        String sql = "UPDATE schema.race SET circuit = ?, laps = ?, winner = ? WHERE raceID = ?";
+        String sql = "UPDATE racing.race SET circuit = ?, laps = ?, winner = ? WHERE raceID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, race.getCircuit().getCircuitID());
             statement.setInt(2, race.getLaps());
@@ -120,14 +120,14 @@ public class RaceDao implements DaoInterface <Race> {
             statement.executeUpdate();
         }
 
-        sql = "DELETE FROM schema.race_team WHERE raceID = ?";
+        sql = "DELETE FROM racing.race_team WHERE raceID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, race.getRaceID());
             statement.executeUpdate();
         }
 
         for (Team team : race.getTeams()) {
-            sql = "INSERT INTO schema.race_team (raceID, teamID) VALUES (?, ?);";
+            sql = "INSERT INTO racing.race_team (raceID, teamID) VALUES (?, ?);";
             try (PreparedStatement statement = connection.prepareStatement(sql);) {
                 statement.setInt(1, race.getRaceID());
                 statement.setInt(2, team.getTeamID());
@@ -138,7 +138,7 @@ public class RaceDao implements DaoInterface <Race> {
 
     public List <Race> getAll() throws SQLException {
         List<Race> races = new ArrayList<>();
-        String sql = "SELECT * FROM schema.race";
+        String sql = "SELECT * FROM racing.race";
 
         try (PreparedStatement statement = connection.prepareStatement(sql); ResultSet resultSet = statement.executeQuery();) {
             while (resultSet.next()) {
@@ -157,7 +157,7 @@ public class RaceDao implements DaoInterface <Race> {
                     race.setCircuit(circuitDirt);
                 }
 
-                sql = "SELECT teamID FROM schema.race_team WHERE raceID = ?";
+                sql = "SELECT teamID FROM racing.race_team WHERE raceID = ?";
                 try (PreparedStatement teamStatement = connection.prepareStatement(sql);) {
                     teamStatement.setInt(1, race.getRaceID());
                     ResultSet teamResultSet = teamStatement.executeQuery();

@@ -26,7 +26,7 @@ public class ChampionshipDao implements DaoInterface<Championship> {
 
     @Override
     public void add(Championship championship) throws SQLException {
-        String sql = "INSERT INTO schema.championship (name, year, champion) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO racing.championship (name, year, champion) VALUES (?, ?, ?);";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setString(1, championship.getName());
             statement.setInt(2, championship.getYear());
@@ -35,7 +35,7 @@ public class ChampionshipDao implements DaoInterface<Championship> {
         }
 
         for (Race race : championship.getRaces()) {
-            sql = "INSERT INTO schema.championship_race (championshipID, raceID) VALUES (?, ?);";
+            sql = "INSERT INTO racing.championship_race (championshipID, raceID) VALUES (?, ?);";
             try (PreparedStatement statement = connection.prepareStatement(sql);) {
                 statement.setInt(1, championship.getChampionshipID());
                 statement.setInt(2, race.getRaceID());
@@ -46,7 +46,7 @@ public class ChampionshipDao implements DaoInterface<Championship> {
 
     @Override
     public Championship read(String championshipID) throws SQLException {
-        String sql = "SELECT * FROM schema.championship WHERE championshipID = ?";
+        String sql = "SELECT * FROM racing.championship WHERE championshipID = ?";
         Championship championship = null;
         ResultSet resultSet = null;
 
@@ -68,7 +68,7 @@ public class ChampionshipDao implements DaoInterface<Championship> {
             }
 
         if (championship != null) {
-            sql = "SELECT raceID FROM schema.championship WHERE championshipID = ?";
+            sql = "SELECT raceID FROM racing.championship WHERE championshipID = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql);) {
                 statement.setString(1, championshipID);
                 resultSet = statement.executeQuery();
@@ -83,13 +83,13 @@ public class ChampionshipDao implements DaoInterface<Championship> {
     }
 
     public void delete(Championship championship) throws SQLException {
-        String sql = "DELETE FROM schema.championship WHERE championshipID = ?";
+        String sql = "DELETE FROM racing.championship WHERE championshipID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, championship.getChampionshipID());
             statement.executeUpdate();
         }
 
-        sql = "DELETE FROM schema.championship_race WHERE championshipID = ?";
+        sql = "DELETE FROM racing.championship_race WHERE championshipID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, championship.getChampionshipID());
             statement.executeUpdate();
@@ -97,7 +97,7 @@ public class ChampionshipDao implements DaoInterface<Championship> {
     }
 
     public void update(Championship championship) throws SQLException {
-        String sql = "UPDATE schema.championship SET name = ?, year = ?, champion = ? WHERE championshipID = ?";
+        String sql = "UPDATE racing.championship SET name = ?, year = ?, champion = ? WHERE championshipID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setString(1, championship.getName());
             statement.setInt(2, championship.getYear());
@@ -106,13 +106,13 @@ public class ChampionshipDao implements DaoInterface<Championship> {
             statement.executeUpdate();
         }
 
-        sql = "DELETE FROM schema.championship_race WHERE championshipID = ?";
+        sql = "DELETE FROM racing.championship_race WHERE championshipID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, championship.getChampionshipID());
             statement.executeUpdate();
         }
         for (Race race : championship.getRaces()) {
-            sql = "INSERT INTO schema.championship_race (championshipID, raceID) VALUES (?, ?);";
+            sql = "INSERT INTO racing.championship_race (championshipID, raceID) VALUES (?, ?);";
             try (PreparedStatement statement = connection.prepareStatement(sql);) {
                 statement.setInt(1, championship.getChampionshipID());
                 statement.setInt(2, race.getRaceID());

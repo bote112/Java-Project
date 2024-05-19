@@ -160,3 +160,5 @@ Circuit created: CircuitAsphalt{circuitID=0, name='1', length=2, location='3', r
 Circuit created: CircuitDirt{circuitID=0, name='111', length=222, location='333', record='444', terrain='555', jumps=666, obstacles=777};2024-05-19T18:30:36.358659500
 Circuit read: 6;2024-05-19T18:31:01.911849400
 Circuit read: 6;2024-05-19T18:31:01.913865100
+Car created: Car{carID=0, model='1', color='2', maxSpeed=3, power=4};2024-05-19T22:18:39.771091500
+Car read: 1;2024-05-19T22:18:42.890659700

@@ -20,7 +20,7 @@ public class CarDao implements DaoInterface<Car> {
     }
     @Override
     public void add(Car car) throws SQLException {
-        String sql = "INSERT INTO schema.car (model, color, maxSpeed, power) VALUES (?, ?, ?, ?);";
+        String sql = "INSERT INTO racing.car (model, color, maxSpeed, power) VALUES (?, ?, ?, ?);";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setString(1, String.valueOf(car.getModel()));
             statement.setString(2, String.valueOf(car.getColor()));
@@ -31,7 +31,7 @@ public class CarDao implements DaoInterface<Car> {
     }
     @Override
     public Car read(String carID) throws SQLException {
-        String sql = "SELECT * FROM schema.car WHERE carID = ?";
+        String sql = "SELECT * FROM racing.car WHERE carID = ?";
         ResultSet resultSet = null;
 
         try ( PreparedStatement statement = connection.prepareStatement(sql);) {
@@ -57,7 +57,7 @@ public class CarDao implements DaoInterface<Car> {
 
     @Override
     public void delete(Car car) throws SQLException {
-        String sql = "DELETE FROM schema.car WHERE carID = ?";
+        String sql = "DELETE FROM racing.car WHERE carID = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, car.getCarID());
@@ -67,7 +67,7 @@ public class CarDao implements DaoInterface<Car> {
 
     @Override
     public void update(Car car) throws SQLException {
-        String sql = "UPDATE schema.car SET model = ?, color = ?, maxSpeed = ?, power = ? WHERE carID = ?";
+        String sql = "UPDATE racing.car SET model = ?, color = ?, maxSpeed = ?, power = ? WHERE carID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setString(1, car.getModel());
             statement.setString(2, car.getColor());

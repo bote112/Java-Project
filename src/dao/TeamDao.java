@@ -25,7 +25,7 @@ public class TeamDao implements DaoInterface<Team>{
 
     @Override
     public void add(Team team) throws SQLException {
-        String sql = "INSERT INTO schema.team (name, sponsor, trophies, budget, driverID) VALUES (?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO racing.team (name, sponsor, trophies, budget, driverID) VALUES (?, ?, ?, ?, ?);";
 
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setString(1, team.getName());
@@ -39,7 +39,7 @@ public class TeamDao implements DaoInterface<Team>{
 
     @Override
     public Team read(String teamID) throws SQLException {
-        String sql = "SELECT * FROM schema.team WHERE teamID = ?";
+        String sql = "SELECT * FROM racing.team WHERE teamID = ?";
         ResultSet resultSet = null;
 
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
@@ -66,7 +66,7 @@ public class TeamDao implements DaoInterface<Team>{
 
     @Override
     public void delete(Team team) throws SQLException {
-        String sql = "DELETE FROM schema.team WHERE teamID = ?";
+        String sql = "DELETE FROM racing.team WHERE teamID = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, team.getTeamID());
@@ -76,7 +76,7 @@ public class TeamDao implements DaoInterface<Team>{
 
     @Override
     public void update(Team team) throws SQLException {
-        String sql = "UPDATE schema.team SET name = ?, sponsor = ?, trophies = ?, budget = ?, driver = ? WHERE teamID = ?";
+        String sql = "UPDATE racing.team SET name = ?, sponsor = ?, trophies = ?, budget = ?, driver = ? WHERE teamID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setString(1, team.getName());
             statement.setString(2, team.getSponsor());
@@ -90,7 +90,7 @@ public class TeamDao implements DaoInterface<Team>{
 
     public List <Team> getAll() throws SQLException {
         List <Team> teams = new ArrayList<>();
-        String sql = "SELECT * FROM schema.team";
+        String sql = "SELECT * FROM racing.team";
 
         try (PreparedStatement statement = connection.prepareStatement(sql); ResultSet resultSet = statement.executeQuery();) {
             while (resultSet.next()) {

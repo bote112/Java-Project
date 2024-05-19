@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DatabaseConnection {
     private static Connection connection = null;
 
-    public static final String JDBC_DRIVER = "jdbc:mysql://127.0.0.1:3306/schema";
+    public static final String JDBC_DRIVER = "jdbc:mysql://localhost:3306/racing";
     public static final String JDBC_PWD = "andreibogos123";
     public static final String JDBC_USER = "root";
 

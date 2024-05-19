@@ -22,10 +22,10 @@ public class CircuitDirtDao implements DaoInterface <CircuitDirt> {
 
     @Override
     public void add(CircuitDirt circuitDirt) throws SQLException {
-        String sql = "INSERT INTO schema.circuit_dirt (circuitID, terrain, jumps, obstacles) VALUES (?, ?, ?, ?);";
-        String sql2 = "INSERT INTO schema.circuit (name, length, location, record) VALUES (?, ?, ?, ?);";
+        String sql = "INSERT INTO racing.circuit_dirt (circuitID, terrain, jumps, obstacles) VALUES (?, ?, ?, ?);";
+        String sql2 = "INSERT INTO racing.circuit (name, length, location, record) VALUES (?, ?, ?, ?);";
 
-        String sql3 = "select circuitID from schema.circuit order by circuitID desc limit 1";
+        String sql3 = "select circuitID from racing.circuit order by circuitID desc limit 1";
         int circuitID = 0;
 
         try (PreparedStatement statement = connection.prepareStatement(sql2);) {
@@ -55,8 +55,8 @@ public class CircuitDirtDao implements DaoInterface <CircuitDirt> {
 
     @Override
     public CircuitDirt read(String circuitID) throws SQLException {
-        String sql = "SELECT * FROM schema.circuit_dirt WHERE circuitID = ?";
-        String sql2 = "SELECT * FROM schema.circuit WHERE circuitID = ?";
+        String sql = "SELECT * FROM racing.circuit_dirt WHERE circuitID = ?";
+        String sql2 = "SELECT * FROM racing.circuit WHERE circuitID = ?";
         ResultSet resultSet = null;
         ResultSet resultSet2 = null;
         String name = null;
@@ -105,8 +105,8 @@ public class CircuitDirtDao implements DaoInterface <CircuitDirt> {
 
     @Override
     public void delete(CircuitDirt circuitDirt) throws SQLException {
-        String sql = "DELETE FROM schema.circuit_dirt WHERE circuitID = ?";
-        String sql2 = "DELETE FROM schema.circuit WHERE circuitID = ?";
+        String sql = "DELETE FROM racing.circuit_dirt WHERE circuitID = ?";
+        String sql2 = "DELETE FROM racing.circuit WHERE circuitID = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, circuitDirt.getCircuitID());
@@ -120,8 +120,8 @@ public class CircuitDirtDao implements DaoInterface <CircuitDirt> {
 
     @Override
     public void update(CircuitDirt circuitDirt) throws SQLException {
-        String sql = "UPDATE schema.circuit_dirt SET terrain = ?, jumps = ?, obstacles = ? WHERE circuitID = ?";
-        String sql2 = "UPDATE schema.circuit SET name = ?, length = ?, location = ?, record = ? WHERE circuitID = ?";
+        String sql = "UPDATE racing.circuit_dirt SET terrain = ?, jumps = ?, obstacles = ? WHERE circuitID = ?";
+        String sql2 = "UPDATE racing.circuit SET name = ?, length = ?, location = ?, record = ? WHERE circuitID = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql2);) {
             statement.setString(1, circuitDirt.getName());

@@ -22,7 +22,7 @@ public class DriverDao implements DaoInterface<Driver> {
 
     @Override
     public void add(Driver driver) throws SQLException {
-        String sql = "INSERT INTO schema.driver (carID, name, age, country) VALUES (?, ?, ?, ?);";
+        String sql = "INSERT INTO racing.driver (carID, name, age, country) VALUES (?, ?, ?, ?);";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, driver.getCar().getCarID());
             statement.setString(2, driver.getName());
@@ -34,7 +34,7 @@ public class DriverDao implements DaoInterface<Driver> {
 
     @Override
     public Driver read(String driverID) throws SQLException {
-        String sql = "SELECT * FROM schema.driver WHERE driverID = ?";
+        String sql = "SELECT * FROM racing.driver WHERE driverID = ?";
         ResultSet resultSet = null;
 
         try ( PreparedStatement statement = connection.prepareStatement(sql);) {
@@ -60,7 +60,7 @@ public class DriverDao implements DaoInterface<Driver> {
 
     @Override
     public void delete(Driver driver) throws SQLException {
-        String sql = "DELETE FROM schema.driver WHERE driverID = ?";
+        String sql = "DELETE FROM racing.driver WHERE driverID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, driver.getDriverID());
             statement.executeUpdate();
@@ -69,7 +69,7 @@ public class DriverDao implements DaoInterface<Driver> {
 
     @Override
     public void update(Driver driver) throws SQLException {
-        String sql = "UPDATE schema.driver SET carID = ?, name = ?, age = ?, country = ? WHERE driverID = ?";
+        String sql = "UPDATE racing.driver SET carID = ?, name = ?, age = ?, country = ? WHERE driverID = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setInt(1, driver.getCar().getCarID());
             statement.setString(2, driver.getName());
