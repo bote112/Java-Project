@@ -42,7 +42,7 @@ public class CircuitAsphalt extends Circuit {
     public String toString() {
         return "CircuitAsphalt{" +
                 "circuitID=" + getCircuitID() +
-                "name='" + getName() + '\'' +
+                ", name='" + getName() + '\'' +
                 ", length=" + getLength() +
                 ", location='" + getLocation() + '\'' +
                 ", record='" + getRecord() + '\'' +

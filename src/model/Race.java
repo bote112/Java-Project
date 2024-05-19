@@ -60,7 +60,7 @@ public class Race {
     public String toString() {
         return "Race " +
                 "raceID=" + raceID +
-                "circuit=" + circuit +
+                ", circuit=" + circuit +
                 ", teams=" + teams +
                 ", laps=" + laps +
                 ", winner=" + winner;

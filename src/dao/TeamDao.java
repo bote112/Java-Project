@@ -47,6 +47,7 @@ public class TeamDao implements DaoInterface<Team>{
 
             while (resultSet.next()) {
                 Team team = new Team();
+                team.setTeamID(resultSet.getInt("teamID"));
                 team.setName(resultSet.getString("name"));
                 team.setSponsor(resultSet.getString("sponsor"));
                 team.setTrophies(resultSet.getInt("trophies"));

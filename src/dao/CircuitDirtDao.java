@@ -73,6 +73,7 @@ public class CircuitDirtDao implements DaoInterface <CircuitDirt> {
 
             while (resultSet.next()) {
                 CircuitDirt circuitDirt = new CircuitDirt();
+                circuitDirt.setCircuitID(resultSet.getInt("circuitID"));
                 circuitDirt.setName(name);
                 circuitDirt.setLength(length);
                 circuitDirt.setLocation(location);

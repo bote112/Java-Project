@@ -58,7 +58,7 @@ public class Championship {
     public String toString() {
         return "Championship{" +
                 "championshipID=" + championshipID +
-                "name='" + name + '\'' +
+                ", name='" + name + '\'' +
                 ", year=" + year +
                 ", champion=" + champion +
                 '}';

@@ -40,6 +40,7 @@ public class CarDao implements DaoInterface<Car> {
 
             while (resultSet.next()) {
                 Car car = new Car();
+                car.setCarID(resultSet.getInt("carID"));
                 car.setModel(resultSet.getString("model"));
                 car.setColor(resultSet.getString("color"));
                 car.setMaxSpeed(resultSet.getString("maxSpeed"));

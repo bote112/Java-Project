@@ -56,6 +56,7 @@ public class ChampionshipDao implements DaoInterface<Championship> {
 
             while (resultSet.next()) {
                 championship = new Championship();
+                championship.setChampionshipID(resultSet.getInt("championshipID"));
                 championship.setName(resultSet.getString("name"));
                 championship.setYear(resultSet.getInt("year"));
                 championship.setChampion(TeamDao.getInstance().read(String.valueOf(resultSet.getInt("champion"))));

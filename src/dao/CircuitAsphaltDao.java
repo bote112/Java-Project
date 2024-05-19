@@ -74,6 +74,7 @@ public class CircuitAsphaltDao implements DaoInterface<CircuitAsphalt> {
 
                 while (resultSet.next()) {
                     CircuitAsphalt circuitAsphalt = new CircuitAsphalt();
+                    circuitAsphalt.setCircuitID(resultSet.getInt("circuitID"));
                     circuitAsphalt.setName(name);
                     circuitAsphalt.setLength(length);
                     circuitAsphalt.setLocation(location);

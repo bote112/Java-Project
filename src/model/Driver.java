@@ -58,8 +58,8 @@ public class Driver {
     public String toString() {
         return "Driver{" +
                 "driverID=" + driverID +
-                "car=" + car +
-                "name='" + name + '\'' +
+                ", car=" + car +
+                ", name='" + name + '\'' +
                 ", age=" + age +
                 ", country='" + country + '\'' +
                 '}';

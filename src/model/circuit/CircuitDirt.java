@@ -45,7 +45,7 @@ public class CircuitDirt extends Circuit {
     public String toString() {
         return "CircuitDirt{" +
                 "circuitID=" + getCircuitID() +
-                "name='" + getName() + '\'' +
+                ", name='" + getName() + '\'' +
                 ", length=" + getLength() +
                 ", location='" + getLocation() + '\'' +
                 ", record='" + getRecord() + '\'' +

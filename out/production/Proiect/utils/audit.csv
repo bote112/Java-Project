@@ -11,3 +11,38 @@ Driver read: 1;2024-05-19T06:07:57.240998700
 Car deleted: 1;2024-05-19T06:08:11.575458700
 Car read: 1;2024-05-19T06:08:19.900652
 Driver deleted: 1;2024-05-19T06:08:40.642720300
+Car deleted: 4;2024-05-19T10:19:35.854102
+Car created: Car{carID=0model='volvo', color='pink', maxSpeed=200kmh, power=100hp};2024-05-19T10:20:29.040909800
+Car read: 4;2024-05-19T10:20:38.851545400
+Car read: 5;2024-05-19T10:20:55.617573700
+Car read: 4;2024-05-19T10:21:44.931787200
+Car read: 4;2024-05-19T10:22:16.924633100
+Car read: 4;2024-05-19T10:23:32.637393
+Car read: 2;2024-05-19T10:23:45.617309300
+Car read: 3;2024-05-19T10:24:08.261878500
+Car read: 1;2024-05-19T10:24:22.321485900
+Team read: 1;2024-05-19T10:26:13.014210800
+Driver read: 1;2024-05-19T10:26:28.329069700
+Car read: 2;2024-05-19T10:34:30.077685600
+Car read: 2;2024-05-19T10:34:46.610238
+Team read: 1;2024-05-19T10:37:51.628096
+Driver read: 2;2024-05-19T10:37:56.566804400
+Car updated: Car{carID=0, model='opel', color='yellow', maxSpeed=100kmh, power=50hp};2024-05-19T10:39:01.865192100
+Car updated: 4;2024-05-19T10:48:16.240795700
+Car read: 4;2024-05-19T10:48:23.849749500
+Car deleted: 4;2024-05-19T10:49:21.928138200
+Car read: 4;2024-05-19T10:49:26.328334100
+Driver read: 2;2024-05-19T10:54:40.557518100
+Driver read: 2;2024-05-19T10:55:22.179456
+Driver updated: Driver{driverID=2, car=Car{carID=5, model='volvo', color='pink', maxSpeed=200kmh, power=100hp}, name='lebron james', age=40, country='america'};2024-05-19T10:55:55.228686800
+Driver read: 2;2024-05-19T10:55:59.475116
+Driver read: 3;2024-05-19T10:56:40.210770700
+Driver created: Driver{driverID=0, car=Car{carID=2, model='Volvo', color='Black', maxSpeed=200kmp, power=320hp}, name='ionut andrei', age=30, country='armenia'};2024-05-19T11:01:59.369199600
+Driver deleted: 3;2024-05-19T11:02:06.201847
+Driver read: 3;2024-05-19T11:02:10.771530400
+Driver read: 2;2024-05-19T11:05:10.749807700
+Driver updated: Driver{driverID=2, car=Car{carID=2, model='Volvo', color='Black', maxSpeed=200kmp, power=320hp}, name='lebron james', age=40, country='america'};2024-05-19T11:05:38.995673600
+Driver read: 2;2024-05-19T11:05:46.224660900
+Driver updated: Driver{driverID=2, car=Car{carID=2, model='Volvo', color='Black', maxSpeed=200kmp, power=320hp}, name='lebron james', age=10, country='germany'};2024-05-19T11:11:13.727519300
+Driver read: 2;2024-05-19T11:11:17.074390300
+Driver read: 1;2024-05-19T11:18:13.028605100

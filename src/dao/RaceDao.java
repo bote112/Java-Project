@@ -68,6 +68,7 @@ public class RaceDao implements DaoInterface <Race> {
                 else if (circuitDirt != null) {
                     race.setCircuit(circuitDirt);
                 }
+                race.setRaceID(resultSet.getInt("raceID"));
                 race.setLaps(resultSet.getInt("laps"));
                 race.setWinner(TeamDao.getInstance().read(String.valueOf(resultSet.getInt("winner"))));
 

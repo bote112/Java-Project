@@ -51,7 +51,7 @@ public class CarService {
         }
     }
 
-    public void update(Scanner scanner) throws SQLException {
+    private Car setCarInfo(Scanner scanner, String carID) {
         System.out.println("Enter car model: ");
         String model = scanner.nextLine().toLowerCase();
         System.out.println("Enter car color: ");
@@ -60,10 +60,29 @@ public class CarService {
         String maxSpeed = scanner.nextLine().toLowerCase();
         System.out.println("Enter car power: ");
         String power = scanner.nextLine().toLowerCase();
-        Car car = new Car(model, color, maxSpeed, power);
+        return new Car(model, color, maxSpeed, power);
+    }
+
+    public void update(Scanner scanner) throws SQLException {
+        System.out.println("Enter car ID: ");
+        String carID = scanner.nextLine().toLowerCase();
+
+        Car car = dbService.getCarById(carID);
+        if (car == null) {
+            System.out.println("Car not found.");
+            return;
+        }
+
+        Car carUpdate = setCarInfo(scanner, carID);
+        car.setCarID(Integer.parseInt(carID));
+        car.setModel(carUpdate.getModel());
+        car.setColor(carUpdate.getColor());
+        car.setMaxSpeed(carUpdate.getMaxSpeed());
+        car.setPower(carUpdate.getPower());
+
         try {
             dbService.updateCar(car);
-            AuditManagement.writeToFile("Car updated: " + car);
+            AuditManagement.writeToFile("Car updated: " + carID);
         } catch (SQLException e) {
             System.out.println("Error updating car: " + e.getSQLState() + " " + e.getMessage());
         }

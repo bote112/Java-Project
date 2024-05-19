@@ -59,7 +59,7 @@ public class Car {
     public String toString() {
         return "Car{" +
                 "carID=" + carID +
-                "model='" + model + '\'' +
+                ", model='" + model + '\'' +
                 ", color='" + color + '\'' +
                 ", maxSpeed=" + maxSpeed +
                 ", power=" + power +

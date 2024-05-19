@@ -69,7 +69,7 @@ public class Team {
     public String toString() {
         return "Team{" +
                 "teamID=" +  teamID +
-                "name='" + name + '\'' +
+                ", name='" + name + '\'' +
                 ", sponsor='" + sponsor + '\'' +
                 ", trophies=" + trophies +
                 ", budget=" + budget +
