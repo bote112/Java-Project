@@ -9,7 +9,7 @@ public class MyJDBC {
                     "andreibogos123"
             );
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM DRIVER");
+            ResultSet resultSet = statement.executeQuery("drop table car");
 
             while (resultSet.next()) {
                 System.out.println(resultSet.getString("driverID"));

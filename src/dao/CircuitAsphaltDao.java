@@ -22,22 +22,32 @@ public class CircuitAsphaltDao implements DaoInterface<CircuitAsphalt> {
 
     @Override
     public void add(CircuitAsphalt circuitAsphalt) throws SQLException {
-        String sql = "INSERT INTO schema.circuit_asphalt (type, turns, tire) VALUES (?, ?, ?, ?);";
+        String sql = "INSERT INTO schema.circuit_asphalt (circuitID, type, turns, tire) VALUES (?, ?, ?, ?);";
         String sql2 = "INSERT INTO schema.circuit (name, length, location, record) VALUES (?, ?, ?, ?);";
+
+        String sql3 = "select circuitID from schema.circuit order by circuitID desc limit 1";
+        int circuitID = 0;
 
         try (PreparedStatement statement = connection.prepareStatement(sql2);) {
             statement.setString(1, circuitAsphalt.getName());
             statement.setString(2, circuitAsphalt.getLength());
             statement.setString(3, circuitAsphalt.getLocation());
             statement.setString(4, circuitAsphalt.getRecord());
-            System.out.println("Circuit added successfully.");
             statement.executeUpdate();
-
         }
+
+        try (PreparedStatement statement = connection.prepareStatement(sql3);) {
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                circuitID = resultSet.getInt("circuitID");
+            }
+        }
+
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
-            statement.setString(1, circuitAsphalt.getType());
-            statement.setInt(2, circuitAsphalt.getTurns());
-            statement.setString(3, circuitAsphalt.getTire());
+            statement.setInt(1, circuitID);
+            statement.setString(2, circuitAsphalt.getType());
+            statement.setInt(3, circuitAsphalt.getTurns());
+            statement.setString(4, circuitAsphalt.getTire());
             statement.executeUpdate();
         }
     }

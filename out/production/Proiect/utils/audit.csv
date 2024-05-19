@@ -121,3 +121,24 @@ Circuit read: 9;2024-05-19T15:44:19.259690700
 Circuit read: 13;2024-05-19T15:44:25.375241700
 Circuit read: 13;2024-05-19T15:44:25.377747100
 Circuit deleted: 13;2024-05-19T15:44:54.729547100
+Circuit created: CircuitAsphalt{circuitID=31, name='1', length=2, location='3', record='4', type='5', turns=6, tire='7'};2024-05-19T16:50:58.702298400
+Circuit read: 31;2024-05-19T16:51:09.136041100
+Circuit read: 31;2024-05-19T16:51:09.138158100
+Circuit read: 1;2024-05-19T16:53:25.605372100
+Circuit read: 1;2024-05-19T16:53:25.607930100
+Circuit created: CircuitAsphalt{circuitID=31, name='9', length=8, location='7', record='6', type='5', turns=4, tire='3'};2024-05-19T16:54:03.870471800
+Circuit read: 31;2024-05-19T16:54:15.797563200
+Circuit read: 31;2024-05-19T16:54:15.799665300
+Circuit read: 2;2024-05-19T16:54:21.652796600
+Circuit read: 2;2024-05-19T16:54:21.653873900
+Circuit read: 9;2024-05-19T16:54:54.258976900
+Circuit read: 9;2024-05-19T16:54:54.266478700
+Circuit created: CircuitAsphalt{circuitID=31, name='1', length=9, location='2', record='8', type='3', turns=7, tire='4'};2024-05-19T16:56:12.833729
+Circuit read: 31;2024-05-19T16:59:40.849774100
+Circuit read: 31;2024-05-19T16:59:40.853398
+Circuit updated: CircuitAsphalt{circuitID=31, name='Carbon', length=19, location='Inteiij', record='29', type='drag', turns=0, tire='soft'};2024-05-19T17:00:31.911559400
+Circuit read: 31;2024-05-19T17:00:37.272199300
+Circuit read: 31;2024-05-19T17:00:37.273785300
+Car created: Car{carID=0, model='audi', color='black', maxSpeed=200kmh, power=300hp};2024-05-19T17:48:08.991587500
+Driver created: Driver{driverID=0, car=Car{carID=1, model='audi', color='black', maxSpeed=200kmh, power=300hp}, name='andrei serban', age=20, country='romania'};2024-05-19T17:48:35.186019300
+Team created: Team{teamID=0, name='plantagro', sponsor='lmk', trophies=1, budget=123321, driver=Driver{driverID=1, car=Car{carID=1, model='audi', color='black', maxSpeed=200kmh, power=300hp}, name='andrei serban', age=20, country='romania'}};2024-05-19T17:49:08.575196400

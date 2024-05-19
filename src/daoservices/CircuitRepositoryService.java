@@ -37,13 +37,14 @@ public class CircuitRepositoryService {
 
     public void addCircuit(Circuit circuit) throws SQLException {
         if (circuit != null) {
+
             switch (circuit) {
                 case CircuitAsphalt circuitAsphalt -> circuitAsphaltDao.add(circuitAsphalt);
                 case CircuitDirt circuitDirt -> circuitDirtDao.add(circuitDirt);
                 default -> throw new IllegalStateException("Unexpected value: " + circuit);
             }
+
         }
-        System.out.println("Circuit added successfullyyy.");
     }
 
     public void removeCircuit(String typeOfCircuit, int circuitID) throws SQLException {

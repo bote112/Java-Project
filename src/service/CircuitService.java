@@ -46,6 +46,10 @@ public class CircuitService {
         circuitAsphalt.setType(type);
         circuitAsphalt.setTurns(turns);
         circuitAsphalt.setTire(tire);
+
+        System.out.println("Type: " + circuitAsphalt.getType());
+        System.out.println("Turns: " + circuitAsphalt.getTurns());
+        System.out.println("Tire: " + circuitAsphalt.getTire());
         //System.out.println(circuitAsphalt);
     }
 
@@ -94,6 +98,8 @@ public class CircuitService {
     }
 
     public void create(Scanner scanner) {
+        System.out.println("Enter circuit ID: ");
+        int circuitID = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter circuit type (asphalt/dirt): ");
         String type = scanner.nextLine().toLowerCase();
         if (!typeOfCircuitValidation(type)) {
@@ -101,7 +107,26 @@ public class CircuitService {
             return;
         }
         try {
-            circuitInit(scanner, type);
+            Circuit circuit = dbService.getCircuit(type, circuitID);
+            if (circuit != null) {
+                System.out.println("Circuit with ID " + circuitID + " already exists.");
+                return;
+            }
+            circuit = new Circuit();
+            circuit.setCircuitID(circuitID);
+            setGeneralInfoUpdate(scanner, circuit);
+            if (type.equals("asphalt")) {
+                CircuitAsphalt circuitAsphalt = new CircuitAsphalt(circuit);
+                asphaltCircuitInit(scanner, circuitAsphalt);
+                dbService.addCircuit(circuitAsphalt);
+                AuditManagement.writeToFile("Circuit created: " + circuitAsphalt);
+            }
+            else if (type.equals("dirt")) {
+                CircuitDirt circuitDirt = new CircuitDirt(circuit);
+                dirtCircuitInit(scanner, circuitDirt);
+                dbService.addCircuit(circuitDirt);
+                AuditManagement.writeToFile("Circuit created: " + circuitDirt);
+            }
         } catch (SQLException e) {
             System.out.println("Error creating circuit: " + e.getSQLState() + " " + e.getMessage());
         }
