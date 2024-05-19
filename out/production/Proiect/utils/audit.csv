@@ -46,3 +46,78 @@ Driver read: 2;2024-05-19T11:05:46.224660900
 Driver updated: Driver{driverID=2, car=Car{carID=2, model='Volvo', color='Black', maxSpeed=200kmp, power=320hp}, name='lebron james', age=10, country='germany'};2024-05-19T11:11:13.727519300
 Driver read: 2;2024-05-19T11:11:17.074390300
 Driver read: 1;2024-05-19T11:18:13.028605100
+Driver read: 2;2024-05-19T11:20:44.467572800
+Driver created: Driver{driverID=0, car=Car{carID=5, model='volvo', color='pink', maxSpeed=200kmh, power=100hp}, name='anton', age=23, country='france'};2024-05-19T11:21:02.627892
+Driver read: 3;2024-05-19T11:21:07.826594100
+Driver read: 4;2024-05-19T11:21:19.542425500
+Team read: 1;2024-05-19T11:23:58.402988
+Car read: 5;2024-05-19T12:13:23.608522400
+Driver read: 4;2024-05-19T12:15:58.246474100
+Driver read: 4;2024-05-19T12:22:08.259909300
+Driver read: 4;2024-05-19T12:23:33.910921600
+Team read: 2;2024-05-19T12:25:52.383855800
+Driver read: 4;2024-05-19T12:35:07.996688600
+Team read: 2;2024-05-19T12:36:25.925769
+Team created: Team{teamID=0, name='alfa romeo', sponsor='intel', trophies=12, budget=1241241, driver=Driver{driverID=4, car=Car{carID=5, model='volvo', color='pink', maxSpeed=200kmh, power=100hp}, name='anton', age=23, country='france'}};2024-05-19T12:45:05.132784500
+Team read: 3;2024-05-19T12:45:13.936729
+Team read: 2;2024-05-19T12:45:54.252567500
+Driver read: 4;2024-05-19T12:47:51.411195700
+Team read: 3;2024-05-19T12:50:01.299078300
+Circuit read: 1;2024-05-19T12:57:43.874821200
+Circuit read: 1;2024-05-19T12:57:43.879343300
+Circuit read: 2;2024-05-19T12:57:55.891705500
+Circuit read: 2;2024-05-19T12:57:55.899911800
+Circuit created: CircuitDirt{circuitID=0, name='dirty dirt', length=12, location='madrid', record='12:23:43', terrain='dirt', jumps=13, obstacles=6};2024-05-19T13:06:10.429392800
+Circuit read: 3;2024-05-19T13:06:19.877475600
+Circuit read: 3;2024-05-19T13:06:19.879962200
+Circuit created: CircuitDirt{circuitID=0, name='shores sandy', length=25, location='paris', record='16:34:64', terrain='sand', jumps=15, obstacles=9};2024-05-19T13:14:02.835415200
+Circuit updated: CircuitDirt{circuitID=2, name='Sandy Shores', length=20, location='25km', record='15:10:12', terrain='sand', jumps=10, obstacles=5};2024-05-19T13:14:02.838362100
+Circuit read: 2;2024-05-19T13:14:11.463251800
+Circuit read: 2;2024-05-19T13:14:11.466723200
+Circuit deleted: 3;2024-05-19T13:16:24.833251200
+Circuit read: 3;2024-05-19T13:16:33.986159800
+Circuit read: 3;2024-05-19T13:16:33.987651800
+Circuit read: 3;2024-05-19T13:20:34.022624800
+Circuit read: 3;2024-05-19T13:20:34.026828600
+Circuit read: 2;2024-05-19T13:20:40.311725200
+Circuit read: 2;2024-05-19T13:20:40.328388400
+Circuit updated: CircuitDirt{circuitID=2, name='Sandy Shores', length=20, location='25km', record='15:10:12', terrain='sand', jumps=53, obstacles=19};2024-05-19T13:21:17.379754300
+Circuit read: 2;2024-05-19T13:21:24.023514100
+Circuit read: 2;2024-05-19T13:21:24.026145100
+Circuit read: 5;2024-05-19T13:23:08.334795300
+Circuit read: 5;2024-05-19T13:23:08.336165800
+Circuit created: CircuitAsphalt{circuitID=0, name='catalunia', length=43, location='spain', record='23:54:12', type='street', turns=39, tire='medium'};2024-05-19T13:30:06.948353600
+Circuit read: 6;2024-05-19T13:30:14.171698900
+Circuit read: 6;2024-05-19T13:30:14.174206900
+Circuit read: 3;2024-05-19T13:30:21.529440600
+Circuit read: 3;2024-05-19T13:30:21.531443400
+Circuit read: 4;2024-05-19T13:30:27.350490400
+Circuit read: 4;2024-05-19T13:30:27.357431500
+Circuit read: 7;2024-05-19T13:30:36.138148600
+Circuit read: 7;2024-05-19T13:30:36.140834900
+Circuit read: 2;2024-05-19T13:31:25.958359400
+Circuit read: 2;2024-05-19T13:31:25.961569600
+Circuit read: 1;2024-05-19T13:48:13.308134200
+Circuit read: 1;2024-05-19T13:48:13.312456
+Circuit read: 1;2024-05-19T14:02:30.981892300
+Circuit read: 1;2024-05-19T14:02:30.986455800
+Circuit read: 2;2024-05-19T14:02:36.821746800
+Circuit read: 2;2024-05-19T14:02:36.823750600
+Circuit read: 8;2024-05-19T14:13:36.033173500
+Circuit read: 8;2024-05-19T14:13:36.050134900
+Circuit deleted: 8;2024-05-19T14:13:56.792277500
+Circuit read: 8;2024-05-19T14:14:02.258704200
+Circuit read: 8;2024-05-19T14:14:02.260210600
+Circuit updated: CircuitDirt{circuitID=9, name='Gravely', length=20, location='romania', record='5:32:1', terrain='sand', jumps=3, obstacles=6};2024-05-19T14:18:40.024505600
+Circuit read: 9;2024-05-19T14:18:44.939562200
+Circuit read: 9;2024-05-19T14:18:44.940574200
+Circuit updated: CircuitDirt{circuitID=9, name='Gra', length=1, location='Rom', record='4', terrain='dirt', jumps=2, obstacles=9};2024-05-19T14:25:18.325033600
+Circuit read: 9;2024-05-19T14:25:24.392544500
+Circuit read: 9;2024-05-19T14:25:24.396135700
+Circuit read: 10;2024-05-19T15:44:13.381299
+Circuit read: 10;2024-05-19T15:44:13.385071700
+Circuit read: 9;2024-05-19T15:44:19.252241
+Circuit read: 9;2024-05-19T15:44:19.259690700
+Circuit read: 13;2024-05-19T15:44:25.375241700
+Circuit read: 13;2024-05-19T15:44:25.377747100
+Circuit deleted: 13;2024-05-19T15:44:54.729547100

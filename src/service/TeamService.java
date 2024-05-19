@@ -72,12 +72,28 @@ public class TeamService {
     }
 
     public void update(Scanner scanner) throws SQLException {
-        Team team = setGeneralInfo(scanner);
+        System.out.println("Enter team ID: ");
+        String teamID = scanner.nextLine();
+        Team team = dbService.getTeamById(teamID);
         if (team == null) {
             return;
         }
-        dbService.updateTeam(team);
-        AuditManagement.writeToFile("Team updated: " + team);
+        Team updatedTeam = setGeneralInfo(scanner);
+        if (updatedTeam == null) {
+            return;
+        }
+        team.setTeamID(Integer.parseInt(teamID));
+        team.setName(updatedTeam.getName());
+        team.setSponsor(updatedTeam.getSponsor());
+        team.setTrophies(updatedTeam.getTrophies());
+        team.setBudget(updatedTeam.getBudget());
+        team.setDriver(updatedTeam.getDriver());
+        try {
+            dbService.updateTeam(team);
+            AuditManagement.writeToFile("Team updated: " + teamID);
+        } catch (SQLException e) {
+            System.out.println("Error updating team: " + e.getSQLState() + " " + e.getMessage());
+        }
     }
 
 }

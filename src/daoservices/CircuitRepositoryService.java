@@ -10,7 +10,10 @@ public class CircuitRepositoryService {
     private CircuitAsphaltDao circuitAsphaltDao;
     private CircuitDirtDao circuitDirtDao;
 
-    public CircuitRepositoryService() throws SQLException {}
+    public CircuitRepositoryService() throws SQLException {
+        circuitAsphaltDao = CircuitAsphaltDao.getInstance();
+        circuitDirtDao = CircuitDirtDao.getInstance();
+    }
 
     public CircuitAsphalt getCircuitAsphaltById(String circuitID) throws SQLException {
         CircuitAsphalt circuitAsphalt = circuitAsphaltDao.read(circuitID);
@@ -40,6 +43,7 @@ public class CircuitRepositoryService {
                 default -> throw new IllegalStateException("Unexpected value: " + circuit);
             }
         }
+        System.out.println("Circuit added successfullyyy.");
     }
 
     public void removeCircuit(String typeOfCircuit, int circuitID) throws SQLException {

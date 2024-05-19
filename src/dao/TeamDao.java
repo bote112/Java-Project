@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Team;
+import dao.DriverDao;
 import service.DatabaseConnection;
 
 public class TeamDao implements DaoInterface<Team>{
@@ -24,7 +25,7 @@ public class TeamDao implements DaoInterface<Team>{
 
     @Override
     public void add(Team team) throws SQLException {
-        String sql = "INSERT INTO schema.team (name, sponsor, trophies, budget, driver) VALUES (?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO schema.team (name, sponsor, trophies, budget, driverID) VALUES (?, ?, ?, ?, ?);";
 
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
             statement.setString(1, team.getName());
@@ -48,8 +49,9 @@ public class TeamDao implements DaoInterface<Team>{
             while (resultSet.next()) {
                 Team team = new Team();
                 team.setTeamID(resultSet.getInt("teamID"));
-                team.setName(resultSet.getString("name"));
+                team.setDriver(DriverDao.getInstance().read(String.valueOf(resultSet.getInt("driverID"))));
                 team.setSponsor(resultSet.getString("sponsor"));
+                team.setName(resultSet.getString("name"));
                 team.setTrophies(resultSet.getInt("trophies"));
                 team.setBudget(resultSet.getInt("budget"));
                 return team;

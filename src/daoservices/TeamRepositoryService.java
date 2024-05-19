@@ -3,6 +3,9 @@ package daoservices;
 import  dao.TeamDao;
 import model.Team;
 
+import dao.DriverDao;
+import model.Driver;
+
 import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
@@ -10,12 +13,22 @@ import java.util.ArrayList;
 
 public class TeamRepositoryService {
     private TeamDao teamDao = TeamDao.getInstance();
+    private DriverDao driverDao = DriverDao.getInstance();
+
     public TeamRepositoryService() throws SQLException {}
 
     public Team getTeamById(String teamID) throws SQLException {
         Team team = teamDao.read(teamID);
         if (team != null) {
-            System.out.println(team);
+            if (team.getDriver() == null) {
+                System.out.println("No driver found for the given team.");
+                return team;
+            } else {
+                String driverID = String.valueOf(team.getDriver().getDriverID());
+                Driver driver = driverDao.read(driverID);
+                team.setDriver(driver);
+                System.out.println(team);
+            }
         } else {
             System.out.println("No team found with the given ID.");
         }

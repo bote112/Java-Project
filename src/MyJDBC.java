@@ -9,14 +9,16 @@ public class MyJDBC {
                     "andreibogos123"
             );
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM CAR");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM DRIVER");
 
             while (resultSet.next()) {
-                System.out.println(resultSet.getInt("carID"));
-                System.out.println(resultSet.getString("model"));
-                System.out.println(resultSet.getString("color"));
-                System.out.println(resultSet.getString("maxSpeed"));
-                System.out.println(resultSet.getString("power"));
+                System.out.println(resultSet.getString("driverID"));
+                System.out.println(resultSet.getString("carID"));
+                System.out.println(resultSet.getString("name"));
+                System.out.println(resultSet.getString("age"));
+                System.out.println(resultSet.getString("country"));
+                System.out.println("________________________");
+
             }
         }
         catch(SQLException e){

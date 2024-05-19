@@ -22,7 +22,7 @@ public class CircuitAsphaltDao implements DaoInterface<CircuitAsphalt> {
 
     @Override
     public void add(CircuitAsphalt circuitAsphalt) throws SQLException {
-        String sql = "INSERT INTO schema.circuit_asphalt (type, turns, tire) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO schema.circuit_asphalt (type, turns, tire) VALUES (?, ?, ?, ?);";
         String sql2 = "INSERT INTO schema.circuit (name, length, location, record) VALUES (?, ?, ?, ?);";
 
         try (PreparedStatement statement = connection.prepareStatement(sql2);) {
@@ -30,7 +30,7 @@ public class CircuitAsphaltDao implements DaoInterface<CircuitAsphalt> {
             statement.setString(2, circuitAsphalt.getLength());
             statement.setString(3, circuitAsphalt.getLocation());
             statement.setString(4, circuitAsphalt.getRecord());
-
+            System.out.println("Circuit added successfully.");
             statement.executeUpdate();
 
         }

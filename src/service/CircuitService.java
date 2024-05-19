@@ -16,7 +16,11 @@ public class CircuitService {
     }
 
     public boolean typeOfCircuitValidation(String type) {
-        return type.equals("asphalt") || type.equals("dirt");
+        if (type.equals("asphalt") || type.equals("dirt")) {
+            return true;
+        }
+        System.out.println("Invalid circuit type.");
+        return false;
     }
 
     private Circuit setGeneralInfo(Scanner scanner) {
@@ -42,6 +46,7 @@ public class CircuitService {
         circuitAsphalt.setType(type);
         circuitAsphalt.setTurns(turns);
         circuitAsphalt.setTire(tire);
+        //System.out.println(circuitAsphalt);
     }
 
     private void dirtCircuitInit(Scanner scanner, CircuitDirt circuitDirt) {
@@ -49,38 +54,42 @@ public class CircuitService {
         String terrain = scanner.nextLine().toLowerCase();
         System.out.println("Enter number of jumps: ");
         int jumps = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter dirt type: ");
+        System.out.println("Enter number of obstacles: ");
         int obstacles = Integer.parseInt(scanner.nextLine());
 
         circuitDirt.setTerrain(terrain);
         circuitDirt.setJumps(jumps);
         circuitDirt.setObstacles(obstacles);
+        //System.out.println(circuitDirt);
+
+
     }
 
     private void circuitInit(Scanner scanner, String type) throws SQLException{
+
+        System.out.println("Enter circuit ID: ");
+        int circuitID = Integer.parseInt(scanner.nextLine());
+
         Circuit circuit = setGeneralInfo(scanner);
+
         if (type.equals("asphalt")) {
-            CircuitAsphalt circuitAsphalt = new CircuitAsphalt();
-            circuitAsphalt.setName(circuit.getName());
-            circuitAsphalt.setLength(circuit.getLength());
-            circuitAsphalt.setLocation(circuit.getLocation());
-            circuitAsphalt.setRecord(circuit.getRecord());
+            CircuitAsphalt circuitAsphalt = new CircuitAsphalt(circuit);
             asphaltCircuitInit(scanner, circuitAsphalt);
-            dbService.addCircuit(circuitAsphalt);
-            AuditManagement.writeToFile("Circuit created: " + circuitAsphalt);
+            circuit = circuitAsphalt;
         }
         else if (type.equals("dirt")) {
-            CircuitDirt circuitDirt = new CircuitDirt();
-            circuitDirt.setName(circuit.getName());
-            circuitDirt.setLength(circuit.getLength());
-            circuitDirt.setLocation(circuit.getLocation());
-            circuitDirt.setRecord(circuit.getRecord());
+            CircuitDirt circuitDirt = new CircuitDirt(circuit);
             dirtCircuitInit(scanner, circuitDirt);
-            dbService.addCircuit(circuitDirt);
-            AuditManagement.writeToFile("Circuit created: " + circuitDirt);
+            circuit = circuitDirt;
         }
-        else {
-            System.out.println("Invalid circuit type.");
+        circuit.setCircuitID(circuitID);
+        System.out.println(circuit);
+        try {
+            dbService.addCircuit(circuit);
+            System.out.println("Circuit created: " + circuit);
+            AuditManagement.writeToFile("Circuit created: " + circuit);
+        } catch (SQLException e) {
+            System.out.println("Error creating circuit in init: " + e.getSQLState() + " " + e.getMessage());
         }
     }
 
@@ -133,6 +142,24 @@ public class CircuitService {
         }
     }
 
+    private Circuit setGeneralInfoUpdate(Scanner scanner, Circuit circuit) {
+        System.out.println("Enter circuit name: ");
+        String name = scanner.nextLine();
+        System.out.println("Enter circuit length: ");
+        String length = scanner.nextLine();
+        System.out.println("Enter circuit location: ");
+        String location = scanner.nextLine();
+        System.out.println("Enter circuit record: ");
+        String record = scanner.nextLine();
+
+        circuit.setName(name);
+        circuit.setLength(length);
+        circuit.setLocation(location);
+        circuit.setRecord(record);
+
+        return circuit;
+    }
+
     public void update(Scanner scanner) {
         System.out.println("Enter circuit ID: ");
         int circuitID = Integer.parseInt(scanner.nextLine());
@@ -148,9 +175,19 @@ public class CircuitService {
                 System.out.println("Circuit with ID " + circuitID + " does not exist.");
                 return;
             }
-            circuitInit(scanner, type);
-            dbService.update(circuit);
-            AuditManagement.writeToFile("Circuit updated: " + circuit);
+            setGeneralInfoUpdate(scanner, circuit);
+            if (type.equals("asphalt")) {
+                CircuitAsphalt circuitAsphalt = (CircuitAsphalt) circuit;
+                asphaltCircuitInit(scanner, circuitAsphalt);
+                dbService.update(circuitAsphalt);
+                AuditManagement.writeToFile("Circuit updated: " + circuitAsphalt);
+            }
+            else if (type.equals("dirt")) {
+                CircuitDirt circuitDirt = (CircuitDirt) circuit;
+                dirtCircuitInit(scanner, circuitDirt);
+                dbService.update(circuitDirt);
+                AuditManagement.writeToFile("Circuit updated: " + circuitDirt);
+            }
         } catch (SQLException e) {
             System.out.println("Error updating circuit: " + e.getSQLState() + " " + e.getMessage());
         }

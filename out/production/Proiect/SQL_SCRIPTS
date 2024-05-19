@@ -5,7 +5,7 @@ CREATE TABLE `car` (
   `maxSpeed` varchar(45) NOT NULL,
   `power` varchar(45) NOT NULL,
   PRIMARY KEY (`carID`)
-)
+);
 
 
 CREATE TABLE `championship` (
@@ -16,7 +16,7 @@ CREATE TABLE `championship` (
   PRIMARY KEY (`championshipID`),
   KEY `championTeamID_idx` (`championTeamID`),
   CONSTRAINT `championTeamID` FOREIGN KEY (`championTeamID`) REFERENCES `team` (`teamID`)
-)
+);
 
 
 CREATE TABLE `championship_race` (
@@ -26,7 +26,7 @@ CREATE TABLE `championship_race` (
   KEY `raceID_idx` (`raceID`),
   CONSTRAINT `championship_raceID` FOREIGN KEY (`raceID`) REFERENCES `race` (`raceID`),
   CONSTRAINT `championshipID` FOREIGN KEY (`championshipID`) REFERENCES `championship` (`championshipID`)
-)
+);
 
 
 CREATE TABLE `circuit` (
@@ -36,7 +36,7 @@ CREATE TABLE `circuit` (
   `location` varchar(45) NOT NULL,
   `record` varchar(45) NOT NULL,
   PRIMARY KEY (`circuitID`)
-)
+);
 
 
 CREATE TABLE `circuit_asphalt` (
@@ -44,9 +44,11 @@ CREATE TABLE `circuit_asphalt` (
   `type` varchar(45) NOT NULL,
   `turns` int NOT NULL,
   `tire` varchar(45) NOT NULL,
-  PRIMARY KEY (`circuitID`),
-  CONSTRAINT `circuitID_asphalt` FOREIGN KEY (`circuitID`) REFERENCES `circuit` (`circuitID`)
-)
+  KEY `circuitID_asphalt_idx` (`circuitID`),
+  CONSTRAINT `circuitID_asphalt` FOREIGN KEY (`circuitID`) REFERENCES `circuit` (`circuitID`) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
 
 
 CREATE TABLE `circuit_dirt` (
@@ -55,8 +57,10 @@ CREATE TABLE `circuit_dirt` (
   `jumps` int NOT NULL,
   `obstacles` int NOT NULL,
   PRIMARY KEY (`circuitID`),
-  CONSTRAINT `circuitID_dirt` FOREIGN KEY (`circuitID`) REFERENCES `circuit` (`circuitID`)
-)
+  CONSTRAINT `circuitID_dirt` FOREIGN KEY (`circuitID`) REFERENCES `circuit` (`circuitID`) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
 
 
 CREATE TABLE `driver` (
@@ -68,7 +72,7 @@ CREATE TABLE `driver` (
   PRIMARY KEY (`driverID`),
   KEY `carID_idx` (`carID`),
   CONSTRAINT `carID` FOREIGN KEY (`carID`) REFERENCES `car` (`carID`)
-)
+);
 
 
 CREATE TABLE `race` (
@@ -81,7 +85,7 @@ CREATE TABLE `race` (
   KEY `winnerTeamID_idx` (`winnerTeamID`),
   CONSTRAINT `circuitID` FOREIGN KEY (`circuitID`) REFERENCES `circuit` (`circuitID`),
   CONSTRAINT `winnerTeamID` FOREIGN KEY (`winnerTeamID`) REFERENCES `team` (`teamID`)
-)
+);
 
 
 CREATE TABLE `race_team` (
@@ -91,7 +95,7 @@ CREATE TABLE `race_team` (
   KEY `teamID_idx` (`teamID`),
   CONSTRAINT `raceID` FOREIGN KEY (`raceID`) REFERENCES `race` (`raceID`),
   CONSTRAINT `teamID` FOREIGN KEY (`teamID`) REFERENCES `team` (`teamID`)
-)
+);
 
 
 CREATE TABLE `team` (
@@ -104,4 +108,4 @@ CREATE TABLE `team` (
   PRIMARY KEY (`teamID`),
   KEY `driverID_idx` (`driverID`),
   CONSTRAINT `driverID` FOREIGN KEY (`driverID`) REFERENCES `driver` (`driverID`)
-)
+);

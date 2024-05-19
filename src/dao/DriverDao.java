@@ -44,6 +44,7 @@ public class DriverDao implements DaoInterface<Driver> {
             while (resultSet.next()) {
                 Driver driver = new Driver();
                 driver.setDriverID(resultSet.getInt("driverID"));
+                driver.setCar(new CarDao().read(String.valueOf(resultSet.getInt("carID"))));
                 driver.setName(resultSet.getString("name"));
                 driver.setAge(resultSet.getInt("age"));
                 driver.setCountry(resultSet.getString("country"));

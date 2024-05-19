@@ -10,6 +10,11 @@ public class CircuitDirt extends Circuit {
 
     public CircuitDirt() {
     }
+
+    public CircuitDirt(Circuit circuit) {
+        super(circuit.getName(), circuit.getLength(), circuit.getLocation(), circuit.getRecord());
+    }
+
     public CircuitDirt(String name, String length, String location, String record, String terrain, int jumps, int obstacles) {
         super( name, length, location, record);
         this.terrain = terrain;
