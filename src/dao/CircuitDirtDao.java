@@ -22,8 +22,11 @@ public class CircuitDirtDao implements DaoInterface <CircuitDirt> {
 
     @Override
     public void add(CircuitDirt circuitDirt) throws SQLException {
-        String sql = "INSERT INTO schema.circuit_dirt (terrain, jumps, obstacles) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO schema.circuit_dirt (circuitID, terrain, jumps, obstacles) VALUES (?, ?, ?, ?);";
         String sql2 = "INSERT INTO schema.circuit (name, length, location, record) VALUES (?, ?, ?, ?);";
+
+        String sql3 = "select circuitID from schema.circuit order by circuitID desc limit 1";
+        int circuitID = 0;
 
         try (PreparedStatement statement = connection.prepareStatement(sql2);) {
             statement.setString(1, circuitDirt.getName());
@@ -33,10 +36,19 @@ public class CircuitDirtDao implements DaoInterface <CircuitDirt> {
 
             statement.executeUpdate();
         }
+
+        try (PreparedStatement statement = connection.prepareStatement(sql3);) {
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                circuitID = resultSet.getInt("circuitID");
+            }
+        }
+
         try (PreparedStatement statement = connection.prepareStatement(sql);) {
-            statement.setString(1, circuitDirt.getTerrain());
-            statement.setInt(2, circuitDirt.getJumps());
-            statement.setInt(3, circuitDirt.getObstacles());
+            statement.setInt(1, circuitID);
+            statement.setString(2, circuitDirt.getTerrain());
+            statement.setInt(3, circuitDirt.getJumps());
+            statement.setInt(4, circuitDirt.getObstacles());
             statement.executeUpdate();
         }
     }
