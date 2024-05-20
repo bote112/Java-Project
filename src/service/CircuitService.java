@@ -87,7 +87,6 @@ public class CircuitService {
             circuit = circuitDirt;
         }
         circuit.setCircuitID(circuitID);
-        System.out.println(circuit);
         try {
             dbService.addCircuit(circuit);
             System.out.println("Circuit created: " + circuit);

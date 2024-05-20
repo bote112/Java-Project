@@ -1,3 +1,6 @@
+create database racing;
+use racing;
+
 CREATE TABLE `car` (
                        `carID` int NOT NULL AUTO_INCREMENT,
                        `model` varchar(45) NOT NULL,

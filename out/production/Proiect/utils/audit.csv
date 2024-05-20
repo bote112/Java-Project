@@ -160,3 +160,19 @@ Circuit created: CircuitAsphalt{circuitID=0, name='1', length=2, location='3', r
 Circuit created: CircuitDirt{circuitID=0, name='111', length=222, location='333', record='444', terrain='555', jumps=666, obstacles=777};2024-05-19T18:30:36.358659500
 Circuit read: 6;2024-05-19T18:31:01.911849400
 Circuit read: 6;2024-05-19T18:31:01.913865100
+Car created: Car{carID=0, model='1', color='2', maxSpeed=3, power=4};2024-05-19T22:18:39.771091500
+Car read: 1;2024-05-19T22:18:42.890659700
+Car created: Car{carID=0, model='audi', color='black', maxSpeed=100kmh, power=90hp};2024-05-21T01:35:33.896704500
+Car read: 1;2024-05-21T01:35:42.011419300
+Driver created: Driver{driverID=0, car=Car{carID=1, model='audi', color='black', maxSpeed=100kmh, power=90hp}, name='max', age=25, country='denmark'};2024-05-21T01:36:21.244179300
+Driver read: 1;2024-05-21T01:36:29.588591200
+Team created: Team{teamID=0, name='redbull', sponsor='energy', trophies=10, budget=1234567, driver=Driver{driverID=1, car=Car{carID=1, model='audi', color='black', maxSpeed=100kmh, power=90hp}, name='max', age=25, country='denmark'}};2024-05-21T01:37:03.448720300
+Team read: 1;2024-05-21T01:37:07.498581300
+Circuit created: CircuitAsphalt{circuitID=0, name='Abcd', length=4, location='Carpati', record='5:32:12', type='street', turns=12, tire='medium'};2024-05-21T01:38:02.840510200
+Circuit read: 1;2024-05-21T01:38:09.079308600
+Circuit read: 1;2024-05-21T01:38:09.080812100
+Circuit created: CircuitDirt{circuitID=0, name='Shores', length=4, location='Romania', record='13:2:3', terrain='sand', jumps=3, obstacles=0};2024-05-21T01:40:10.423204900
+Circuit read: 1;2024-05-21T01:40:14.311011900
+Circuit read: 1;2024-05-21T01:40:14.313197200
+Circuit read: 2;2024-05-21T01:40:19.263190600
+Circuit read: 2;2024-05-21T01:40:19.265473100
