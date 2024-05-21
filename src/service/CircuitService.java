@@ -99,6 +99,11 @@ public class CircuitService {
     public void create(Scanner scanner) {
         System.out.println("Enter circuit ID: ");
         int circuitID = Integer.parseInt(scanner.nextLine());
+        if (circuitID < 0) {
+            System.out.println("Invalid circuit ID.");
+            return;
+        }
+
         System.out.println("Enter circuit type (asphalt/dirt): ");
         String type = scanner.nextLine().toLowerCase();
         if (!typeOfCircuitValidation(type)) {
@@ -107,7 +112,10 @@ public class CircuitService {
         }
         try {
             Circuit circuit = dbService.getCircuit(type, circuitID);
-            if (circuit != null) {
+            Circuit circuitAsphaltTest = dbService.getCircuit("asphalt", circuitID);
+            Circuit circuitDirtTest = dbService.getCircuit("dirt", circuitID);
+
+            if (circuitAsphaltTest != null || circuitDirtTest != null) {
                 System.out.println("Circuit with ID " + circuitID + " already exists.");
                 return;
             }

@@ -176,3 +176,9 @@ Circuit read: 1;2024-05-21T01:40:14.311011900
 Circuit read: 1;2024-05-21T01:40:14.313197200
 Circuit read: 2;2024-05-21T01:40:19.263190600
 Circuit read: 2;2024-05-21T01:40:19.265473100
+Driver read: 1;2024-05-21T02:26:39.398723500
+Car created: Car{carID=0, model='1', color='2', maxSpeed=3, power=4};2024-05-21T02:27:00.835701700
+Driver created: Driver{driverID=0, car=Car{carID=1, model='1', color='2', maxSpeed=3, power=4}, name='1', age=2, country='3'};2024-05-21T02:27:09.564163600
+Car read: 1;2024-05-21T02:27:14.885027
+Driver read: 1;2024-05-21T02:27:18.480160600
+Circuit created: CircuitDirt{circuitID=0, name='Ta', length=4, location='Tu', record='9', terrain='dirt', jumps=4, obstacles=0};2024-05-21T10:36:57.897492200
